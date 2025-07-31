@@ -169,6 +169,13 @@ export function countTransactionCategories(
   return aggregatedCategories;
 }
 
+export const formatCategoryName = (category: string): string => {
+  return category
+    .replace(/_/g, " ") // Replace underscores with spaces
+    .toLowerCase() // Convert to lowercase
+    .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize each word
+};
+
 export function extractCustomerIdFromUrl(url: string) {
   // Split the URL string by '/'
   const parts = url.split("/");

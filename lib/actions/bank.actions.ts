@@ -171,7 +171,7 @@ export const getTransactions = async ({
         accountId: transaction.account_id,
         amount: transaction.amount,
         pending: transaction.pending,
-        category: transaction.category ? transaction.category[0] : "",
+        category: transaction.personal_finance_category?.primary ?? "",
         date: transaction.date,
         image: transaction.logo_url,
       }));

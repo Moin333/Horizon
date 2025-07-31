@@ -8,7 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { transactionCategoryStyles } from "@/constants"
-import { cn, formatAmount, formatDateTime, getTransactionStatus, removeSpecialCharacters } from "@/lib/utils"
+import { cn, formatAmount, formatCategoryName, formatDateTime, getTransactionStatus, removeSpecialCharacters } from "@/lib/utils"
 
 const CategoryBadge = ({ category }: CategoryBadgeProps) => {
   const {
@@ -21,7 +21,7 @@ const CategoryBadge = ({ category }: CategoryBadgeProps) => {
   return (
     <div className={cn('category-badge', borderColor, chipBackgroundColor)}>
       <div className={cn('size-2 rounded-full', backgroundColor)} />
-      <p className={cn('text-[12px] font-medium', textColor)}>{category}</p>
+      <p className={cn('text-[12px] font-medium', textColor)}>{formatCategoryName(category)}</p>
     </div>
   )
 } 
@@ -78,7 +78,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
               </TableCell>
 
               <TableCell className="pl-2 pr-10 max-md:hidden">
-               <CategoryBadge category={t.category} /> 
+               <CategoryBadge category={t.category || 'Uncategorized'} />
               </TableCell>
             </TableRow>
           )
